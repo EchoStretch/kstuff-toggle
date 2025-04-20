@@ -85,6 +85,7 @@ main() {
   case 0x7010000:
     sysentvec     = KERNEL_ADDRESS_DATA_BASE + 0xe21ab8;
     sysentvec_ps4 = KERNEL_ADDRESS_DATA_BASE + 0xe21c30;
+    break;
   case 0x7200000:
   case 0x7400000:
   case 0x7600000:
