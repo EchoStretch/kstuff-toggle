@@ -28,6 +28,7 @@ int
 main() {
   intptr_t sysentvec = 0;
   intptr_t sysentvec_ps4 = 0;
+  int option = 2;
 
   switch(kernel_get_fw_version() & 0xffff0000) {
   case 0x1000000:
@@ -93,22 +94,42 @@ main() {
     sysentvec     = KERNEL_ADDRESS_DATA_BASE + 0xe21b78;
     sysentvec_ps4 = KERNEL_ADDRESS_DATA_BASE + 0xe21cf0;
     break;
-	
+    
   default:
     notify("Unsupported firmware");
     return -1;
   }
 
-  if(kernel_getshort(sysentvec_ps4 + 14) == 0xffff) {
-    kernel_setshort(sysentvec + 14, 0xdeb7);
-    kernel_setshort(sysentvec_ps4 + 14, 0xdeb7);
-    notify("kstuff enabled");
+  if(option == 1) {
+    if(kernel_getshort(sysentvec + 14) == 0xffff) {
+      kernel_setshort(sysentvec + 14, 0xdeb7);
+      notify("kstuff enabled");
+    } else {
+      kernel_setshort(sysentvec + 14, 0xffff);
+      notify("kstuff disabled");
+    }
+  } else if(option == 2) {
+    if(kernel_getshort(sysentvec_ps4 + 14) == 0xffff) {
+      kernel_setshort(sysentvec_ps4 + 14, 0xdeb7);
+      notify("kstuff enabled");
+    } else {
+      kernel_setshort(sysentvec_ps4 + 14, 0xffff);
+      notify("kstuff disabled");
+    }
+  } else if(option == 3) {
+    if(kernel_getshort(sysentvec_ps4 + 14) == 0xffff) {
+      kernel_setshort(sysentvec + 14, 0xdeb7);
+      kernel_setshort(sysentvec_ps4 + 14, 0xdeb7);
+      notify("kstuff enabled)");
+    } else {
+      kernel_setshort(sysentvec + 14, 0xffff);
+      kernel_setshort(sysentvec_ps4 + 14, 0xffff);
+      notify("kstuff disabled)");
+    }
   } else {
-    kernel_setshort(sysentvec + 14, 0xffff);
-    kernel_setshort(sysentvec_ps4 + 14, 0xffff);
-    notify("kstuff disabled");
+    notify("Invalid option");
+    return -1;
   }
 
   return 0;
 }
-
