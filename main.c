@@ -101,7 +101,16 @@ main() {
     sysentvec     = KERNEL_ADDRESS_DATA_BASE + 0xe31c48;
     sysentvec_ps4 = KERNEL_ADDRESS_DATA_BASE + 0xe31dc0;
     break;
-    
+
+  case 0x10000000:
+  case 0x10010000:
+  case 0x10200000:
+  case 0x10400000:
+  case 0x10600000:
+    sysentvec     = KERNEL_ADDRESS_DATA_BASE + 0xde0ee8;
+    sysentvec_ps4 = KERNEL_ADDRESS_DATA_BASE + 0xde1060;
+    break;
+
   default:
     notify("Unsupported firmware");
     return -1;
