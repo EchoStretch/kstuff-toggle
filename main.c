@@ -107,8 +107,8 @@ main() {
   case 0x9200000:
   case 0x9400000:
   case 0x9600000:
-    sysentvec     = KERNEL_ADDRESS_DATA_BASE + 0xde0e18;
-    sysentvec_ps4 = KERNEL_ADDRESS_DATA_BASE + 0xde0f90;
+    sysentvec     = KERNEL_ADDRESS_DATA_BASE + 0xdba648;
+    sysentvec_ps4 = KERNEL_ADDRESS_DATA_BASE + 0xdba7c0;
     break;
 
   case 0x10000000:
@@ -116,8 +116,8 @@ main() {
   case 0x10200000:
   case 0x10400000:
   case 0x10600000:
-    sysentvec     = KERNEL_ADDRESS_DATA_BASE + 0xde0ee8;
-    sysentvec_ps4 = KERNEL_ADDRESS_DATA_BASE + 0xde1060;
+    sysentvec     = KERNEL_ADDRESS_DATA_BASE + 0xdba6d8;
+    sysentvec_ps4 = KERNEL_ADDRESS_DATA_BASE + 0xdba850;
     break;
 
   default:
