@@ -4,6 +4,12 @@
 
 #include <ps5/kernel.h>
 
+#ifndef OPTION
+#define OPTION 2
+#endif
+
+int option = OPTION;
+
 typedef struct notify_request {
   char useless[45];
   char message[3075];
@@ -28,7 +34,6 @@ int
 main() {
   intptr_t sysentvec = 0;
   intptr_t sysentvec_ps4 = 0;
-  int option = 2;
 
   switch(kernel_get_fw_version() & 0xffff0000) {
   case 0x1000000:

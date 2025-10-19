@@ -23,18 +23,29 @@ else
     $(error PS5_PAYLOAD_SDK is undefined)
 endif
 
-ELF := kstuff-toggle.elf
+# Base name for payloads
+ELF_BASE := kstuff-toggle
+
+# Option variants to build
+OPTIONS := 0 1 2
+
+# Resulting ELF files
+ELFS := $(foreach opt,$(OPTIONS),$(ELF_BASE)-$(opt).elf)
 
 CFLAGS := -Wall -Werror
 
-all: $(ELF)
+# Default target: build all variants
+all: $(ELFS)
 
-$(ELF): main.c
-	$(CC) $(CFLAGS) -o $@ $^
+# Rule for each option build
+$(ELF_BASE)-%.elf: main.c
+	@echo "Building payload with OPTION=$*"
+	$(CC) $(CFLAGS) -DOPTION=$* -o $@ $^
 
+# Clean all artifacts
 clean:
-	rm -f $(ELF)
+	rm -f $(ELFS) $(ELF_BASE).elf
 
-test: $(ELF)
+# Deploy default ELF (option 0) for quick testing
+test: $(ELF_BASE)-0.elf
 	$(PS5_DEPLOY) -h $(PS5_HOST) -p $(PS5_PORT) $^
-

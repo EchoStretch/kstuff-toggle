@@ -33,16 +33,18 @@ jobs:
           wget https://github.com/ps5-payload-dev/pacbrew-repo/releases/download/v0.29/ps5-payload-dev.tar.gz
           sudo tar xf ps5-payload-dev.tar.gz -C /
 
-      - name: Build Payload
+      - name: Build all payloads
         run: |
           export PS5_PAYLOAD_SDK=/opt/ps5-payload-sdk
           make
 
-      - name: Upload Payload artifact
+      - name: Upload Payload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: Kstuff-Toggle
           path: |
-            ./kstuff-toggle.elf
+            ./kstuff-toggle-0.elf
+            ./kstuff-toggle-1.elf
+            ./kstuff-toggle-2.elf
             ./homebrew.js
           if-no-files-found: error
