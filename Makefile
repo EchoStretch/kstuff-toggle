@@ -27,7 +27,7 @@ endif
 ELF_BASE := kstuff-toggle
 
 # Option variants to build
-OPTIONS := 0 1 2
+OPTIONS := 1 2 3
 
 # Resulting ELF files
 ELFS := $(foreach opt,$(OPTIONS),$(ELF_BASE)-$(opt).elf)
@@ -44,8 +44,8 @@ $(ELF_BASE)-%.elf: main.c
 
 # Clean all artifacts
 clean:
-	rm -f $(ELFS) $(ELF_BASE).elf
+	rm -f $(ELFS)
 
-# Deploy default ELF (option 0) for quick testing
-test: $(ELF_BASE)-0.elf
+# Deploy default ELF (option 1) for quick testing
+test: $(ELF_BASE)-1.elf
 	$(PS5_DEPLOY) -h $(PS5_HOST) -p $(PS5_PORT) $^

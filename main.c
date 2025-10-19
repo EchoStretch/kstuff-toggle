@@ -133,28 +133,28 @@ main() {
   if(option == 1) {
     if(kernel_getshort(sysentvec + 14) == 0xffff) {
       kernel_setshort(sysentvec + 14, 0xdeb7);
-      notify("kstuff enabled");
+      notify("kstuff PS5 sysentvec enabled");
     } else {
       kernel_setshort(sysentvec + 14, 0xffff);
-      notify("kstuff disabled");
+      notify("kstuff PS5 sysentvec disabled");
     }
   } else if(option == 2) {
     if(kernel_getshort(sysentvec_ps4 + 14) == 0xffff) {
       kernel_setshort(sysentvec_ps4 + 14, 0xdeb7);
-      notify("kstuff enabled");
+      notify("kstuff PS4 sysentvec enabled");
     } else {
       kernel_setshort(sysentvec_ps4 + 14, 0xffff);
-      notify("kstuff disabled");
+      notify("kstuff PS4 sysentvec disabled");
     }
   } else if(option == 3) {
     if(kernel_getshort(sysentvec_ps4 + 14) == 0xffff) {
       kernel_setshort(sysentvec + 14, 0xdeb7);
       kernel_setshort(sysentvec_ps4 + 14, 0xdeb7);
-      notify("kstuff enabled)");
+      notify("kstuff Both sysentvec enabled)");
     } else {
       kernel_setshort(sysentvec + 14, 0xffff);
       kernel_setshort(sysentvec_ps4 + 14, 0xffff);
-      notify("kstuff disabled)");
+      notify("kstuff Both sysentvec disabled)");
     }
   } else {
     notify("Invalid option");

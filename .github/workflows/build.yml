@@ -43,8 +43,8 @@ jobs:
         with:
           name: Kstuff-Toggle
           path: |
-            ./kstuff-toggle-0.elf
             ./kstuff-toggle-1.elf
             ./kstuff-toggle-2.elf
+            ./kstuff-toggle-3.elf
             ./homebrew.js
           if-no-files-found: error
