@@ -109,6 +109,7 @@ main() {
     break;
 
   case 0x9000000:
+  case 0x9050000:
   case 0x9200000:
   case 0x9400000:
   case 0x9600000:
