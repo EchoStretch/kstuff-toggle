@@ -140,9 +140,11 @@ main() {
 
   case 0x12000000:
   case 0x12020000:
+  case 0x12100000:
   case 0x12200000:
   case 0x12400000:
   case 0x12600000:
+  case 0x12700000:
     sysentvec     = KERNEL_ADDRESS_DATA_BASE + 0xdcc978;
     sysentvec_ps4 = KERNEL_ADDRESS_DATA_BASE + 0xdccaf0;
     break;
